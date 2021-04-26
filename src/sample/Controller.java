@@ -171,6 +171,9 @@ public class Controller {
             throwables.printStackTrace();
         }
 
+
+
+
         try{
             String sql="insert into service(washing,cleaningtheinside,changeofoil,changeofbrakes,changeofmotor,changeofwheels,changeofcarcass) " +
                     "values('"+ c1.isSelected() +"','"+ c2.isSelected() +"','"+ c3.isSelected() +"'," +
