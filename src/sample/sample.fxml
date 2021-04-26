@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <AnchorPane fx:id="leftpanel" prefHeight="700.0" prefWidth="283.0" style="-fx-background-color: #101820FF;">
+            <children>
+                <Button fx:id="servicebutton" layoutX="38.0" layoutY="213.0" mnemonicParsing="false" onAction="#serviceaction" prefHeight="91.0" prefWidth="207.0" style="-fx-background-color: #F2AA4CFF;" text="Service" textFill="#f20a0a" textOverrun="CLIP">
+                    <font>
+                        <Font name="Calibri Bold" size="36.0" />
+                    </font>
+                </Button>
+            <Button fx:id="newcarbutton" layoutX="38.0" layoutY="77.0" mnemonicParsing="false" onAction="#newcaraction" prefHeight="91.0" prefWidth="207.0" style="-fx-background-color: #F2AA4CFF;" text="New Car" textFill="#f00c0c" textOverrun="CLIP">
+               <font>
+                  <Font name="Calibri Bold" size="36.0" />
+               </font>
+            </Button>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="rightpanel" layoutX="283.0" layoutY="-4.0" prefHeight="707.0" prefWidth="919.0" style="-fx-background-color: #F2AA4CFF;">
+         <children>
+            <Label fx:id="carlabel" layoutX="585.0" layoutY="52.0" prefHeight="36.0" prefWidth="60.0" text="Car">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="namelabel" layoutX="23.0" layoutY="53.0" prefHeight="34.0" prefWidth="224.0" text="Name and Surname  " textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Corbel" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="numberofownerlabel" layoutX="30.0" layoutY="120.0" prefHeight="36.0" prefWidth="207.0" text="Number of owner">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateofreceivinglabel" layoutX="35.0" layoutY="187.0" prefHeight="36.0" prefWidth="207.0" text="Date of receiving">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateofgivinglabel" layoutX="41.0" layoutY="249.0" prefHeight="36.0" prefWidth="196.0" text="Date of giving">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dateofreceiving" layoutX="255.0" layoutY="193.0" />
+            <DatePicker fx:id="dateofgiving" layoutX="255.0" layoutY="255.0" />
+            <TextField fx:id="numberofownertextfield" layoutX="333.0" layoutY="128.0" prefHeight="25.0" prefWidth="116.0" />
+            <VBox fx:id="VBox" layoutX="642.0" layoutY="60.0" prefHeight="44.0" prefWidth="143.0">
+               <children>
+                  <ChoiceBox fx:id="carchoicebox" prefWidth="150.0" />
+               </children>
+            </VBox>
+            <Label fx:id="modelofcarlabel" layoutX="533.0" layoutY="131.0" prefHeight="36.0" prefWidth="172.0" text="Model of a car">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <VBox fx:id="VBox2" layoutX="705.0" layoutY="136.0" prefHeight="70.0" prefWidth="100.0">
+               <children>
+                  <ChoiceBox fx:id="modelofcarchoicebox" prefHeight="16.0" prefWidth="100.0" />
+               </children>
+            </VBox>
+            <Label fx:id="numberofcarlabel" layoutX="585.0" layoutY="203.0" text="Number of a car">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="numberofcartextfield1" layoutX="555.0" layoutY="255.0" prefHeight="25.0" prefWidth="60.0" />
+            <Label fx:id="tirelabel" layoutX="619.0" layoutY="235.0" prefHeight="64.0" prefWidth="18.0" text="-">
+               <font>
+                  <Font size="43.0" />
+               </font>
+            </Label>
+            <TextField fx:id="numberofcartextfield2" layoutX="645.0" layoutY="255.0" prefHeight="25.0" prefWidth="68.0" />
+            <TextField fx:id="numberofcartextfield3" layoutX="751.0" layoutY="255.0" prefHeight="25.0" prefWidth="60.0" />
+            <Label fx:id="tirelabel2" layoutX="723.0" layoutY="236.0" prefHeight="25.0" prefWidth="18.0" text="-">
+               <font>
+                  <Font size="43.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nametextfield" layoutX="255.0" layoutY="57.0" prefHeight="25.0" prefWidth="87.0" promptText="Name" />
+            <TextField fx:id="surnametextfield" layoutX="373.0" layoutY="57.0" prefHeight="25.0" prefWidth="122.0" promptText="Surname" />
+            <VBox layoutX="249.0" layoutY="127.0" prefHeight="44.0" prefWidth="68.0">
+               <children>
+                  <ChoiceBox fx:id="numberofownerchoicebox" prefHeight="20.0" prefWidth="68.0" />
+               </children>
+            </VBox>
+            <Label fx:id="serviceslabel" layoutX="41.0" layoutY="464.0" text="Services">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="c1" layoutX="200.0" layoutY="392.0" mnemonicParsing="false" text="Washing">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="c2" layoutX="200.0" layoutY="429.0" mnemonicParsing="false" text="Cleaning the inside">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="c3" layoutX="200.0" layoutY="466.0" mnemonicParsing="false" text="Change of oil">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="c4" layoutX="200.0" layoutY="503.0" mnemonicParsing="false" text="Change of brakes">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="c5" layoutX="200.0" layoutY="538.0" mnemonicParsing="false" text="Change of motor">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="c6" layoutX="200.0" layoutY="575.0" mnemonicParsing="false" text="Change of wheels">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="c7" layoutX="200.0" layoutY="612.0" mnemonicParsing="false" text="Change of carcass">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <Button fx:id="sebdtodatabsebutton" layoutX="621.0" layoutY="626.0" mnemonicParsing="false" onAction="#sendtodatabaseaction" prefHeight="64.0" prefWidth="169.0" text="Send to Database">
+               <font>
+                  <Font name="Calibri" size="18.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+    </children>
+</AnchorPane>
