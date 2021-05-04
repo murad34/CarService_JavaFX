@@ -634,7 +634,6 @@ public class Controller {
                         return false;
                     }
                 }
-
                 if (searchchoicebox.getSelectionModel().getSelectedItem()=="Name") {
                     if (clients.getName().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
@@ -642,7 +641,6 @@ public class Controller {
                         return false;
                     }
                 }
-
                 if (searchchoicebox.getSelectionModel().getSelectedItem()=="Number of owner") {
                     if (clients.getNumberofowner().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
@@ -650,7 +648,6 @@ public class Controller {
                         return false;
                     }
                 }
-
                 if (searchchoicebox.getSelectionModel().getSelectedItem()=="Date of receiving") {
                     if (clients.getDateofreceiving().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
@@ -658,7 +655,6 @@ public class Controller {
                         return false;
                     }
                 }
-
                 if (searchchoicebox.getSelectionModel().getSelectedItem()=="Date of giving") {
                     if (clients.getDateofgiving().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
@@ -666,7 +662,6 @@ public class Controller {
                         return false;
                     }
                 }
-
                 if (searchchoicebox.getSelectionModel().getSelectedItem()=="Car") {
                     if (clients.getCar().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
@@ -674,7 +669,6 @@ public class Controller {
                         return false;
                     }
                 }
-
                 if (searchchoicebox.getSelectionModel().getSelectedItem()=="Model of a car") {
                     if (clients.getModelofcar().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
@@ -682,7 +676,6 @@ public class Controller {
                         return false;
                     }
                 }
-
                 if (searchchoicebox.getSelectionModel().getSelectedItem()=="Number of a car") {
                     if (clients.getNumberofcar().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
@@ -691,9 +684,24 @@ public class Controller {
                     }
                 }
                 if (searchchoicebox.getSelectionModel().getSelectedItem()==null) {
-
+                    if (String.valueOf(clients.getId()).indexOf(lowercasefilter) != -1)
+                        return true;
+                    else if (clients.getName().toLowerCase().indexOf(lowercasefilter) != -1) {
+                        return true;
+                    } else if (clients.getNumberofowner().toLowerCase().indexOf(lowercasefilter) != -1) {
+                        return true;
+                    } else if (clients.getDateofreceiving().toLowerCase().indexOf(lowercasefilter) != -1) {
+                        return true;
+                    } else if (clients.getDateofgiving().toLowerCase().indexOf(lowercasefilter) != -1) {
+                        return true;
+                    } else if (clients.getCar().toLowerCase().indexOf(lowercasefilter) != -1) {
+                        return true;
+                    } else if (clients.getModelofcar().toLowerCase().indexOf(lowercasefilter) != -1) {
+                        return true;
+                    } else if (clients.getNumberofcar().toLowerCase().indexOf(lowercasefilter) != -1) {
+                        return true;
+                    }
                 }
-
                 return false;
             });
         });
