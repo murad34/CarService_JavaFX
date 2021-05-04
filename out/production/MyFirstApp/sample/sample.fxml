@@ -17,17 +17,17 @@
     <children>
         <AnchorPane fx:id="leftpanel" prefHeight="700.0" prefWidth="239.0" style="-fx-background-color: #101820FF;">
             <children>
-                <Button fx:id="clientsbutton" layoutX="15.0" layoutY="221.0" mnemonicParsing="false" onAction="#clientsaction" prefHeight="91.0" prefWidth="207.0" style="-fx-background-color: #F2AA4CFF;" text="Clients" textFill="#1e05ff" textOverrun="CLIP">
+                <Button fx:id="clientsbutton" layoutX="15.0" layoutY="221.0" mnemonicParsing="false" onAction="#clientsaction" prefHeight="91.0" prefWidth="207.0" style="-fx-background-color: #F2AA4CFF;" text="Clients" textOverrun="CLIP">
                     <font>
                         <Font name="Calibri Bold" size="36.0" />
                     </font>
                 </Button>
-            <Button fx:id="newcarbutton" layoutX="15.0" layoutY="85.0" mnemonicParsing="false" onAction="#newcaraction" prefHeight="91.0" prefWidth="207.0" style="-fx-background-color: #F2AA4CFF;" text="New Car" textFill="#0e12f0" textOverrun="CLIP">
+            <Button fx:id="newcarbutton" layoutX="15.0" layoutY="85.0" mnemonicParsing="false" onAction="#newcaraction" prefHeight="91.0" prefWidth="207.0" style="-fx-background-color: #F2AA4CFF;" text="New Car" textOverrun="CLIP">
                <font>
                   <Font name="Calibri Bold" size="36.0" />
                </font>
             </Button>
-            <Button fx:id="servicesbutton" layoutX="15.0" layoutY="358.0" mnemonicParsing="false" onAction="#servicesaction" prefHeight="91.0" prefWidth="207.0" style="-fx-background-color: #F2AA4CFF;" text="Services" textFill="#1e05ff" textOverrun="CLIP">
+            <Button fx:id="servicesbutton" layoutX="15.0" layoutY="358.0" mnemonicParsing="false" onAction="#servicesaction" prefHeight="91.0" prefWidth="207.0" style="-fx-background-color: #F2AA4CFF;" text="Services" textOverrun="CLIP">
                <font>
                   <Font name="Calibri Bold" size="36.0" />
                </font>
@@ -69,7 +69,7 @@
             <TextField fx:id="numberofownertextfield" layoutX="333.0" layoutY="128.0" prefHeight="25.0" prefWidth="116.0" visible="false" />
             <VBox fx:id="VBox" layoutX="642.0" layoutY="60.0" prefHeight="44.0" prefWidth="143.0" visible="false">
                <children>
-                  <ChoiceBox fx:id="carchoicebox" prefWidth="150.0" style="-fx-border-color: BLACK;" visible="false" />
+                  <ChoiceBox fx:id="carchoicebox" prefWidth="150.0" style="-fx-border-color: #000000;" visible="false" />
                </children>
             </VBox>
             <Label fx:id="modelofcarlabel" layoutX="533.0" layoutY="131.0" prefHeight="36.0" prefWidth="172.0" text="Model of a car" visible="false">
@@ -79,7 +79,7 @@
             </Label>
             <VBox fx:id="VBox2" layoutX="705.0" layoutY="136.0" prefHeight="70.0" prefWidth="100.0" visible="false">
                <children>
-                  <ChoiceBox fx:id="modelofcarchoicebox" prefHeight="16.0" prefWidth="100.0" style="-fx-border-color: BLACK;" visible="false" />
+                  <ChoiceBox fx:id="modelofcarchoicebox" prefHeight="16.0" prefWidth="100.0" style="-fx-border-color: #000000;" visible="false" />
                </children>
             </VBox>
             <Label fx:id="numberofcarlabel" layoutX="585.0" layoutY="203.0" text="Number of a car" visible="false">
@@ -137,22 +137,7 @@
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="c6" layoutX="1052.0" layoutY="227.0" mnemonicParsing="false" text="Change of wheels" visible="false">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </CheckBox>
-            <CheckBox fx:id="c7" layoutX="1052.0" layoutY="264.0" mnemonicParsing="false" text="Change of carcass" visible="false">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </CheckBox>
-            <Button fx:id="sebdtodatabsebutton" layoutX="629.0" layoutY="361.0" mnemonicParsing="false" onAction="#sendtodatabaseaction" prefHeight="64.0" prefWidth="169.0" text="Send to Database" visible="false">
-               <font>
-                  <Font name="Calibri" size="18.0" />
-               </font>
-            </Button>
-            <TableView fx:id="clientstable" layoutX="4.0" layoutY="128.0" prefHeight="567.0" prefWidth="1647.0" visible="false">
+            <TableView fx:id="clientstable" layoutX="4.0" layoutY="128.0" prefHeight="567.0" prefWidth="1647.0" style="-fx-region-background: #FF0000;" visible="false">
                <columns>
                   <TableColumn fx:id="colId" prefWidth="48.0" text="ID" />
                   <TableColumn fx:id="colName" prefWidth="177.0" text="Name" />
@@ -171,23 +156,57 @@
                   <TableColumn fx:id="colR7" prefWidth="122.0" text="Change of carcass" />
                </columns>
             </TableView>
+            <CheckBox fx:id="c6" layoutX="1052.0" layoutY="227.0" mnemonicParsing="false" text="Change of wheels" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="c7" layoutX="1052.0" layoutY="264.0" mnemonicParsing="false" text="Change of carcass" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <Button fx:id="sebdtodatabsebutton" layoutX="629.0" layoutY="361.0" mnemonicParsing="false" onAction="#sendtodatabaseaction" prefHeight="64.0" prefWidth="169.0" text="Send to Database" visible="false">
+               <font>
+                  <Font name="Calibri" size="18.0" />
+               </font>
+            </Button>
             <Button fx:id="searchbutton" layoutX="504.0" layoutY="47.0" mnemonicParsing="false" onAction="#searchbutton" prefHeight="15.0" prefWidth="102.0" text="Search" visible="false">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>
             </Button>
-            <VBox fx:id="searchVBox" layoutX="95.0" layoutY="51.0" prefHeight="51.0" prefWidth="143.0" visible="false">
+            <VBox fx:id="searchVBox" layoutX="177.0" layoutY="80.0" prefHeight="44.0" prefWidth="143.0" visible="false">
                <children>
                   <ChoiceBox fx:id="searchchoicebox" prefHeight="27.0" prefWidth="197.0" style="-fx-border-color: BLACK;" />
                </children>
             </VBox>
-            <TextField fx:id="searchtextfield" layoutX="284.0" layoutY="52.0" prefHeight="25.0" prefWidth="177.0" visible="false" />
-            <TableView fx:id="servicestable" layoutX="362.0" layoutY="206.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+            <TableView fx:id="servicestable" layoutX="502.0" layoutY="132.0" prefHeight="376.0" prefWidth="479.0" visible="false">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="colId3" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="colServices" prefWidth="75.0" text="Services" />
+                  <TableColumn fx:id="colPrices" prefWidth="75.0" text="Prices" />
               </columns>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </TableView>
+            <TextField fx:id="searchtextfield" layoutX="482.0" layoutY="79.0" prefHeight="25.0" prefWidth="177.0" promptText="               search" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Label fx:id="searchlabel" alignment="CENTER" contentDisplay="CENTER" layoutX="517.0" layoutY="22.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: white;" text="Search" textAlignment="JUSTIFY" underline="true" visible="false">
+               <font>
+                  <Font name="Ebrima" size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="iddeletetextfield" layoutX="901.0" layoutY="52.0" prefHeight="25.0" prefWidth="60.0" promptText="    ID" visible="false" />
+            <Button fx:id="deletebutton" layoutX="977.0" layoutY="52.0" mnemonicParsing="false" onAction="#deletebuttonaction" text="DELETE" visible="false" />
+            <Button fx:id="refreshbutton" layoutX="1273.0" layoutY="57.0" mnemonicParsing="false" onAction="#refreshbuttonaction" prefHeight="25.0" prefWidth="76.0" text="Refresh" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
     </children>
 </AnchorPane>
