@@ -1,6 +1,5 @@
 package sample;
 
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
@@ -186,6 +185,9 @@ public class Controller {
     private VBox searchVBox;
 
     @FXML
+    private Label categorylabel;
+
+    @FXML
     private ChoiceBox<String> searchchoicebox;
 
     @FXML
@@ -231,69 +233,100 @@ public class Controller {
         numberofownerchoicebox.getItems().add("012");
     }
 
-//    void carchoicebox() {
-//        carchoicebox.getItems().add("Mercedes");
-//        carchoicebox.getItems().add("BMW");
-//        carchoicebox.getItems().add("Audi");
-//        carchoicebox.getItems().add("Mustang");
-//        carchoicebox.getItems().add("Ford");
-//    }
+    String wer1 = "Mercedes";
+    String wer2 = "BMW";
+    String wer3 = "Audi";
+    String wer4 = "Ford";
 
     void carchoicebox() {
-        carchoicebox.getItems().add("asd");
+        carchoicebox.getItems().add("Mercedes");
         carchoicebox.getItems().add("BMW");
         carchoicebox.getItems().add("Audi");
-        carchoicebox.getItems().add("Mustang");
         carchoicebox.getItems().add("Ford");
     }
 
+
     void modelofcarchoicebox() {
-        modelofcarchoicebox.getItems().add("A");
-        modelofcarchoicebox.getItems().add("E");
+
         modelofcarchoicebox.getItems().add("C");
-        modelofcarchoicebox.getItems().add("M");
+        modelofcarchoicebox.getItems().add("E");
+        modelofcarchoicebox.getItems().add("X5");
+        modelofcarchoicebox.getItems().add("M5");
+        modelofcarchoicebox.getItems().add("i7");
+        modelofcarchoicebox.getItems().add("A4");
+        modelofcarchoicebox.getItems().add("RS7");
+        modelofcarchoicebox.getItems().add("Q8");
+        modelofcarchoicebox.getItems().add("Mustang");
         modelofcarchoicebox.getItems().add("Fusion");
-    }
+        modelofcarchoicebox.getItems().add("Focus");
 
-//    String df = "asd";
-//    int asd= 123;
 
-    void qwert() {
+//        String a35 = carchoicebox.getSelectionModel().getSelectedItem();
 
-//        ObservableList<String> cursors = FXCollections.observableArrayList("a","b","c");
-//        modelofcarchoicebox.setItems(cursors);
+//        if (carchoicebox.getSelectionModel().getSelectedItem()==wer1) {
+//            modelofcarchoicebox.getItems().add("C");
+//            modelofcarchoicebox.getItems().add("E");
+//        }
+//        else if (carchoicebox.getSelectionModel().getSelectedItem()==wer2) {
+//            modelofcarchoicebox.getItems().add("X5");
+//            modelofcarchoicebox.getItems().add("M5");
+//            modelofcarchoicebox.getItems().add("i7");
+//        }
+//        else if (carchoicebox.getSelectionModel().getSelectedItem()==wer3) {
+//            modelofcarchoicebox.getItems().add("A4");
+//            modelofcarchoicebox.getItems().add("RS7");
+//            modelofcarchoicebox.getItems().add("Q8");
+//        }
+//        else {
+//            modelofcarchoicebox.getItems().add("Mustang");
+//            modelofcarchoicebox.getItems().add("Fusion");
+//            modelofcarchoicebox.getItems().add("Focus");
+//        }
+////        (carchoicebox.getSelectionModel().getSelectedItem()=="Ford")
 
-//        if (carchoicebox.getValue().indexOf(1)) {
-//
-//            modelofcarchoicebox.getItems().add("asdf");
+
+//        if (a35 == "Mercedes") {
+//            modelofcarchoicebox.getItems().add("C");
+//            modelofcarchoicebox.getItems().add("E");
+//        }
+//        else if (a35 == "BMW") {
+//            modelofcarchoicebox.getItems().add("X5");
+//            modelofcarchoicebox.getItems().add("M5");
+//            modelofcarchoicebox.getItems().add("i7");
+//        }
+//        else if (a35 == "Audi") {
+//            modelofcarchoicebox.getItems().add("A4");
+//            modelofcarchoicebox.getItems().add("RS7");
+//            modelofcarchoicebox.getItems().add("Q8");
+//        }
+//        else {
+//            modelofcarchoicebox.getItems().add("Mustang");
+//            modelofcarchoicebox.getItems().add("Fusion");
+//            modelofcarchoicebox.getItems().add("Focus");
+//            System.out.println("error");
 //        }
 
-//        switch (carchoicebox.getValue().indexOf(0)){
-//            case 1 :
-//                modelofcarchoicebox.getItems().add("M");
+
+//        String a35 = carchoicebox.getSelectionModel().getSelectedItem();
+//
+//        switch (a35) {
+//            case "Mercedes" :
+//                modelofcarchoicebox.getItems().add("C");
+//                break;
+//            case "BMW" :
+//                modelofcarchoicebox.getItems().add("X5");
+//                break;
+//            case "Audi" :
+//                modelofcarchoicebox.getItems().add("A4");
 //                break;
 //            default:
+//                modelofcarchoicebox.getItems().add("Mustang");
+//                modelofcarchoicebox.getItems().add("Fusion");
+//                modelofcarchoicebox.getItems().add("Focus");
 //                System.out.println("error");
-//
-//        }
-        String modelofcarstring1 = carchoicebox.getSelectionModel().getSelectedItem();
-
-
-        if (modelofcarstring1 == "asd") {
-            modelofcarchoicebox.getItems().add("safgsargt");
-            System.out.println(modelofcarstring1);
-        } else if(modelofcarstring1 =="BMW"){
-            modelofcarchoicebox.getItems().add("sagol");
-            System.out.println(modelofcarstring1);
-        }
-        System.out.println(modelofcarstring1);
-//        switch (carchoicebox.getValue()) {
-//            case "asd":
-//                modelofcarchoicebox.getItems().add("M");
 //                break;
-//            default:
-//                modelofcarchoicebox.getItems().add("sagol");
 //        }
+
 
     }
 
@@ -334,6 +367,7 @@ public class Controller {
         sebdtodatabsebutton.setVisible(true);
 
         clientstable.setVisible(false);
+        categorylabel.setVisible(false);
         searchVBox.setVisible(false);
         searchchoicebox.setVisible(false);
         searchtextfield.setVisible(false);
@@ -375,7 +409,6 @@ public class Controller {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
 
         String a1;
         if (c1.isSelected()) {
@@ -482,6 +515,7 @@ public class Controller {
 
         servicestable.setVisible(false);
 
+        categorylabel.setVisible(true);
         searchVBox.setVisible(true);
         searchchoicebox.setVisible(true);
         searchtextfield.setVisible(true);
@@ -566,34 +600,16 @@ public class Controller {
 
     // search part
 
-    String q = "ID";
-    String w = "Name";
-    String e = "Number of owner";
-    String r = "Date of receiving";
-    String t = "Date of giving";
-    String y = "Car";
-    String u = "Model of a car";
-    String i = "Number of a car";
-
-    int a = 1;
-    int s = 2;
-    int d = 3;
-    int f = 4;
-    int g = 5;
-    int h = 6;
-    int j = 7;
-    int k = 8;
-
     void searchchoosebox() {
 
-        searchchoicebox.getItems().add(String.valueOf(a));
-        searchchoicebox.getItems().add(String.valueOf(s));
-        searchchoicebox.getItems().add(String.valueOf(d));
-        searchchoicebox.getItems().add(String.valueOf(f));
-        searchchoicebox.getItems().add(String.valueOf(g));
-        searchchoicebox.getItems().add(String.valueOf(h));
-        searchchoicebox.getItems().add(String.valueOf(j));
-        searchchoicebox.getItems().add(String.valueOf(k));
+        searchchoicebox.getItems().add("ID");
+        searchchoicebox.getItems().add("Name");
+        searchchoicebox.getItems().add("Number of owner");
+        searchchoicebox.getItems().add("Date of receiving");
+        searchchoicebox.getItems().add("Date of giving");
+        searchchoicebox.getItems().add("Car");
+        searchchoicebox.getItems().add("Model of a car");
+        searchchoicebox.getItems().add("Number of a car");
 
     }
 
@@ -611,7 +627,7 @@ public class Controller {
                 String lowercasefilter = newvalue.toLowerCase();
 
 
-                if (searchchoicebox.getSelectionModel().isSelected(a)) {
+                if (searchchoicebox.getSelectionModel().getSelectedItem()=="ID") {
                     if (String.valueOf(clients.getId()).indexOf(lowercasefilter) != -1)
                         return true;
                     else {
@@ -619,7 +635,7 @@ public class Controller {
                     }
                 }
 
-                if (searchchoicebox.getSelectionModel().isSelected(s)) {
+                if (searchchoicebox.getSelectionModel().getSelectedItem()=="Name") {
                     if (clients.getName().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
                     } else {
@@ -627,7 +643,7 @@ public class Controller {
                     }
                 }
 
-                if (searchchoicebox.getSelectionModel().isSelected(d)) {
+                if (searchchoicebox.getSelectionModel().getSelectedItem()=="Number of owner") {
                     if (clients.getNumberofowner().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
                     } else {
@@ -635,7 +651,7 @@ public class Controller {
                     }
                 }
 
-                if (searchchoicebox.getSelectionModel().isSelected(f)) {
+                if (searchchoicebox.getSelectionModel().getSelectedItem()=="Date of receiving") {
                     if (clients.getDateofreceiving().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
                     } else {
@@ -643,7 +659,7 @@ public class Controller {
                     }
                 }
 
-                if (searchchoicebox.getSelectionModel().isSelected(g)) {
+                if (searchchoicebox.getSelectionModel().getSelectedItem()=="Date of giving") {
                     if (clients.getDateofgiving().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
                     } else {
@@ -651,7 +667,7 @@ public class Controller {
                     }
                 }
 
-                if (searchchoicebox.getSelectionModel().isSelected(h)) {
+                if (searchchoicebox.getSelectionModel().getSelectedItem()=="Car") {
                     if (clients.getCar().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
                     } else {
@@ -659,7 +675,7 @@ public class Controller {
                     }
                 }
 
-                if (searchchoicebox.getSelectionModel().isSelected(j)) {
+                if (searchchoicebox.getSelectionModel().getSelectedItem()=="Model of a car") {
                     if (clients.getModelofcar().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
                     } else {
@@ -667,13 +683,17 @@ public class Controller {
                     }
                 }
 
-                if (searchchoicebox.getSelectionModel().isSelected(k)) {
+                if (searchchoicebox.getSelectionModel().getSelectedItem()=="Number of a car") {
                     if (clients.getNumberofcar().toLowerCase().indexOf(lowercasefilter) != -1) {
                         return true;
                     } else {
                         return false;
                     }
                 }
+                if (searchchoicebox.getSelectionModel().getSelectedItem()==null) {
+
+                }
+
                 return false;
             });
         });
@@ -696,25 +716,6 @@ public class Controller {
     }
 
 
-//    void executeQuery(String sql) {
-//        DataBase db = new DataBase();
-//        Statement st;
-//        try{
-//            st=db.connecting().createStatement();
-//            st.executeUpdate(sql);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-
-//    void deleteRecord() {
-//        String sql = "delete from clients where id = " + iddeletetextfield.getText() + ";delete from clients_services where id = " + iddeletetextfield.getText() + "";
-//        executeQuery(sql);
-//        showClients();
-//    }
-
-
     @FXML
     void deletebuttonaction(ActionEvent event) {
 
@@ -729,37 +730,15 @@ public class Controller {
             throwables.printStackTrace();
         }
 
-//        if (event.getSource()==deletebutton){
-//            deleteRecord();
-//        }
-////        showClients();
-//
-////        deleteRecord();
-////        deleteRecord2();
-
     }
 
 
     // refresh part
 
-
-    public void abc() {
-//        getClients();
-//        showClients();
-    }
-
     @FXML
     void refreshbuttonaction(ActionEvent event) {
 
-        asdf();
-
-//        clientstable.getItems().clear();
-        getClients();
-//        showClients();
-//        abc();
-
     }
-
 
     //part 3 - services
 
@@ -799,6 +778,7 @@ public class Controller {
         sebdtodatabsebutton.setVisible(false);
 
         clientstable.setVisible(false);
+        categorylabel.setVisible(false);
         searchVBox.setVisible(false);
         searchchoicebox.setVisible(false);
         searchtextfield.setVisible(false);
@@ -812,20 +792,15 @@ public class Controller {
 
     }
 
-
     @FXML
     void initialize() {
 
         numberofownerchoicebox();
         carchoicebox();
-         modelofcarchoicebox();
+        modelofcarchoicebox();
         showClients();
-//        searchchoosebox();
         searchchoosebox();
         search();
-//        deleteRecord();
-
-        qwert();
 
     }
 }
