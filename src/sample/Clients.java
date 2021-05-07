@@ -10,15 +10,8 @@ public class Clients {
     private String car;
     private String modelofcar;
     private String numberofcar;
-    private String washing;
-    private String cleaning;
-    private String changeofoil;
-    private String changeofbrakes;
-    private String changeofmotor;
-    private String changeofwheels;
-    private String changeofcarcass;
 
-    public Clients(Integer id, String name, String numberofowner, String dateofreceiving, String dateofgiving, String car, String modelofcar, String numberofcar, String washing, String cleaning, String changeofoil, String changeofbrakes, String changeofmotor, String changeofwheels, String changeofcarcass) {
+    public Clients(Integer id, String name, String numberofowner, String dateofreceiving, String dateofgiving, String car, String modelofcar, String numberofcar) {
         this.id = id;
         this.name = name;
         this.numberofowner = numberofowner;
@@ -27,13 +20,7 @@ public class Clients {
         this.car = car;
         this.modelofcar = modelofcar;
         this.numberofcar = numberofcar;
-        this.washing = washing;
-        this.cleaning = cleaning;
-        this.changeofoil = changeofoil;
-        this.changeofbrakes = changeofbrakes;
-        this.changeofmotor = changeofmotor;
-        this.changeofwheels = changeofwheels;
-        this.changeofcarcass = changeofcarcass;
+
     }
 
     public Integer getId() {
@@ -68,31 +55,4 @@ public class Clients {
         return numberofcar;
     }
 
-    public String getWashing() {
-        return washing;
-    }
-
-    public String getCleaning() {
-        return cleaning;
-    }
-
-    public String getChangeofoil() {
-        return changeofoil;
-    }
-
-    public String getChangeofbrakes() {
-        return changeofbrakes;
-    }
-
-    public String getChangeofmotor() {
-        return changeofmotor;
-    }
-
-    public String getChangeofwheels() {
-        return changeofwheels;
-    }
-
-    public String getChangeofcarcass() {
-        return changeofcarcass;
-    }
 }

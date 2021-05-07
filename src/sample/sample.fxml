@@ -4,20 +4,22 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1894.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <AnchorPane fx:id="leftpanel" prefHeight="700.0" prefWidth="239.0" style="-fx-background-color: #101820FF;">
             <children>
@@ -31,7 +33,7 @@
                   <Font name="Calibri Bold" size="36.0" />
                </font>
             </Button>
-            <Button fx:id="servicesbutton" layoutX="15.0" layoutY="358.0" mnemonicParsing="false" onAction="#servicesaction" prefHeight="91.0" prefWidth="207.0" style="-fx-background-color: #F2AA4CFF;" text="Services" textOverrun="CLIP">
+            <Button fx:id="servicesbutton" layoutX="15.0" layoutY="487.0" mnemonicParsing="false" onAction="#servicesaction" prefHeight="91.0" prefWidth="207.0" style="-fx-background-color: #F2AA4CFF;" text="Services" textOverrun="CLIP">
                <font>
                   <Font name="Calibri Bold" size="36.0" />
                </font>
@@ -41,7 +43,7 @@
             <Insets />
          </opaqueInsets>
         </AnchorPane>
-        <AnchorPane fx:id="rightpanel" layoutX="239.0" prefHeight="700.0" prefWidth="1655.0" style="-fx-background-color: #F2AA4CFF;">
+        <AnchorPane fx:id="servicessearch" layoutX="239.0" prefHeight="700.0" prefWidth="965.0" style="-fx-background-color: #F2AA4CFF;">
          <children>
             <Label fx:id="carlabel" layoutX="585.0" layoutY="52.0" prefHeight="36.0" prefWidth="60.0" text="Car" visible="false">
                <font>
@@ -73,7 +75,7 @@
             <TextField fx:id="numberofownertextfield" layoutX="333.0" layoutY="128.0" prefHeight="25.0" prefWidth="116.0" visible="false" />
             <VBox fx:id="VBox" layoutX="642.0" layoutY="60.0" prefHeight="44.0" prefWidth="143.0" visible="false">
                <children>
-                  <ChoiceBox fx:id="carchoicebox" prefWidth="150.0" style="-fx-border-color: #000000;" visible="false" />
+                  <ComboBox fx:id="carcombobox" onAction="#carcomboboxaction" prefWidth="150.0" />
                </children>
             </VBox>
             <Label fx:id="modelofcarlabel" layoutX="533.0" layoutY="131.0" prefHeight="36.0" prefWidth="172.0" text="Model of a car" visible="false">
@@ -83,7 +85,7 @@
             </Label>
             <VBox fx:id="VBox2" layoutX="705.0" layoutY="136.0" prefHeight="70.0" prefWidth="100.0" visible="false">
                <children>
-                  <ChoiceBox fx:id="modelofcarchoicebox" prefHeight="16.0" prefWidth="100.0" style="-fx-border-color: #000000;" visible="false" />
+                  <ComboBox fx:id="modelofcarcombobox" onAction="#modelofcarcomboboxaction" prefWidth="150.0" visible="false" />
                </children>
             </VBox>
             <Label fx:id="numberofcarlabel" layoutX="585.0" layoutY="203.0" text="Number of a car" visible="false">
@@ -106,42 +108,42 @@
             </Label>
             <TextField fx:id="nametextfield" layoutX="255.0" layoutY="57.0" prefHeight="25.0" prefWidth="87.0" promptText="Name" visible="false" />
             <TextField fx:id="surnametextfield" layoutX="362.0" layoutY="57.0" prefHeight="25.0" prefWidth="122.0" promptText="Surname" visible="false" />
-            <VBox layoutX="249.0" layoutY="127.0" prefHeight="44.0" prefWidth="68.0">
+            <VBox fx:id="numberofownervbox" layoutX="249.0" layoutY="127.0" prefHeight="44.0" prefWidth="68.0" visible="false">
                <children>
                   <ChoiceBox fx:id="numberofownerchoicebox" prefHeight="20.0" prefWidth="68.0" style="-fx-border-color: BLACK;" visible="false" />
                </children>
             </VBox>
-            <Label fx:id="serviceslabel" layoutX="893.0" layoutY="116.0" text="Services" visible="false">
+            <Label fx:id="serviceslabel" layoutX="75.0" layoutY="465.0" text="Services" visible="false">
                <font>
                   <Font size="35.0" />
                </font>
             </Label>
-            <CheckBox fx:id="c1" layoutX="1052.0" layoutY="44.0" mnemonicParsing="false" text="Washing" visible="false">
+            <CheckBox fx:id="c1" layoutX="234.0" layoutY="393.0" mnemonicParsing="false" text="Washing" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="c2" layoutX="1052.0" layoutY="81.0" mnemonicParsing="false" text="Cleaning the inside" visible="false">
+            <CheckBox fx:id="c2" layoutX="234.0" layoutY="430.0" mnemonicParsing="false" text="Cleaning the inside" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="c3" layoutX="1052.0" layoutY="118.0" mnemonicParsing="false" text="Change of oil" visible="false">
+            <CheckBox fx:id="c3" layoutX="234.0" layoutY="467.0" mnemonicParsing="false" text="Change of oil" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="c4" layoutX="1052.0" layoutY="155.0" mnemonicParsing="false" text="Change of brakes" visible="false">
+            <CheckBox fx:id="c4" layoutX="234.0" layoutY="504.0" mnemonicParsing="false" text="Change of brakes" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="c5" layoutX="1052.0" layoutY="190.0" mnemonicParsing="false" text="Change of motor" visible="false">
+            <CheckBox fx:id="c5" layoutX="234.0" layoutY="539.0" mnemonicParsing="false" text="Change of motor" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <TableView fx:id="clientstable" layoutX="4.0" layoutY="128.0" prefHeight="567.0" prefWidth="1647.0" style="-fx-region-background: #FF0000;" visible="false">
+            <TableView fx:id="clientstable" layoutX="16.0" layoutY="125.0" prefHeight="567.0" prefWidth="931.0" style="-fx-region-background: #FF0000;" visible="false">
                <columns>
                   <TableColumn fx:id="colId" prefWidth="48.0" text="ID" />
                   <TableColumn fx:id="colName" prefWidth="177.0" text="Name" />
@@ -151,26 +153,19 @@
                   <TableColumn fx:id="colCar" prefWidth="88.0" text="Car" />
                   <TableColumn fx:id="colModelofcar" prefWidth="100.0" text="Model of a car" />
                   <TableColumn fx:id="colNumberofcar" prefWidth="117.0" text="Number of a car" />
-                  <TableColumn fx:id="colR1" prefWidth="73.0" text="Washing" />
-                  <TableColumn fx:id="colR2" prefWidth="74.0" text="Cleaning" />
-                  <TableColumn fx:id="colR3" minWidth="0.0" prefWidth="100.0" text="Change of oil" />
-                  <TableColumn fx:id="colR4" prefWidth="114.0" text="Change of brakes" />
-                  <TableColumn fx:id="colR5" prefWidth="128.0" text="Change of mnotor" />
-                  <TableColumn fx:id="colR6" minWidth="0.0" prefWidth="132.0" text="Change of wheels" />
-                  <TableColumn fx:id="colR7" prefWidth="122.0" text="Change of carcass" />
                </columns>
             </TableView>
-            <CheckBox fx:id="c6" layoutX="1052.0" layoutY="227.0" mnemonicParsing="false" text="Change of wheels" visible="false">
+            <CheckBox fx:id="c6" layoutX="234.0" layoutY="576.0" mnemonicParsing="false" text="Change of wheels" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="c7" layoutX="1052.0" layoutY="264.0" mnemonicParsing="false" text="Change of carcass" visible="false">
+            <CheckBox fx:id="c7" layoutX="234.0" layoutY="613.0" mnemonicParsing="false" text="Change of carcass" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <Button fx:id="sebdtodatabsebutton" layoutX="629.0" layoutY="361.0" mnemonicParsing="false" onAction="#sendtodatabaseaction" prefHeight="64.0" prefWidth="169.0" text="Send to Database" visible="false">
+            <Button fx:id="sebdtodatabsebutton" layoutX="601.0" layoutY="447.0" mnemonicParsing="false" onAction="#sendtodatabaseaction" prefHeight="64.0" prefWidth="169.0" text="Send to Database" visible="false">
                <font>
                   <Font name="Calibri" size="18.0" />
                </font>
@@ -180,59 +175,33 @@
                   <Font name="Cambria" size="18.0" />
                </font>
             </Button>
-            <VBox fx:id="searchVBox" layoutX="334.0" layoutY="82.0" prefHeight="44.0" prefWidth="124.0" visible="false">
+            <VBox fx:id="searchVBox" layoutX="150.0" layoutY="58.0" prefHeight="44.0" prefWidth="124.0" visible="false">
                <children>
-                  <ChoiceBox fx:id="searchchoicebox" prefHeight="27.0" prefWidth="197.0" style="-fx-border-color: BLACK;" />
+                  <ChoiceBox fx:id="searchchoicebox" prefHeight="27.0" prefWidth="197.0" style="-fx-border-color: BLACK;" visible="false" />
                </children>
             </VBox>
-            <TableView fx:id="servicestable" layoutX="502.0" layoutY="132.0" prefHeight="376.0" prefWidth="479.0" visible="false">
+            <TableView fx:id="servicestable" layoutX="234.0" layoutY="205.0" prefHeight="376.0" prefWidth="479.0" visible="false">
               <columns>
-                <TableColumn fx:id="colId3" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="colServices" prefWidth="75.0" text="Services" />
-                  <TableColumn fx:id="colPrices" prefWidth="75.0" text="Prices" />
+                <TableColumn fx:id="colId4" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="colServices" prefWidth="131.0" text="Services" />
+                  <TableColumn fx:id="colPrices" prefWidth="67.0" text="Prices" />
               </columns>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </TableView>
-            <TextField fx:id="searchtextfield" layoutX="482.0" layoutY="79.0" prefHeight="25.0" prefWidth="177.0" promptText="               search" visible="false">
+            <TextField fx:id="searchtextfield" layoutX="296.0" layoutY="55.0" prefHeight="25.0" prefWidth="177.0" promptText="               search" visible="false">
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <Label fx:id="searchlabel" alignment="CENTER" contentDisplay="CENTER" layoutX="517.0" layoutY="22.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: white;" text="Search" textAlignment="JUSTIFY" underline="true" visible="false">
-               <font>
-                  <Font name="Ebrima" size="30.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20263157784938812" green="0.04605263099074364" blue="0.8289473652839661" />
-                           </color>
-                        </Stop>
-                        <Stop offset="0.9885057471264367">
-                           <color>
-                              <Color red="0.18165205419063568" green="0.051169589161872864" blue="0.9210526347160339" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.18165205419063568" green="0.051169589161872864" blue="0.9210526347160339" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <TextField fx:id="iddeletetextfield" layoutX="734.0" layoutY="82.0" prefHeight="25.0" prefWidth="60.0" promptText="    ID" visible="false" />
-            <Button fx:id="deletebutton" layoutX="810.0" layoutY="81.0" mnemonicParsing="false" onAction="#deletebuttonaction" text="DELETE" visible="false" />
-            <Button fx:id="refreshbutton" layoutX="766.0" layoutY="33.0" mnemonicParsing="false" onAction="#refreshbuttonaction" prefHeight="25.0" prefWidth="76.0" text="Refresh" visible="false">
+            <TextField fx:id="iddeletetextfield" layoutX="548.0" layoutY="58.0" prefHeight="25.0" prefWidth="60.0" promptText="    ID" visible="false" />
+            <Button fx:id="deletebutton" layoutX="624.0" layoutY="57.0" mnemonicParsing="false" onAction="#deletebuttonaction" text="DELETE" visible="false" />
+            <Button fx:id="refreshbutton" layoutX="731.0" layoutY="54.0" mnemonicParsing="false" onAction="#refreshbuttonaction" prefHeight="25.0" prefWidth="76.0" text="Refresh" visible="false">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label fx:id="categorylabel" layoutX="225.0" layoutY="79.0" prefHeight="31.0" prefWidth="100.0" text="Сategory" visible="false">
+            <Label fx:id="categorylabel" layoutX="39.0" layoutY="55.0" prefHeight="31.0" prefWidth="100.0" text="Сategory" visible="false">
                <font>
                   <Font name="Calibri" size="25.0" />
                </font>
@@ -253,6 +222,88 @@
                   </RadialGradient>
                </textFill>
             </Label>
+            <TableView fx:id="requirementstable" layoutX="17.0" layoutY="137.0" prefHeight="540.0" prefWidth="931.0" visible="false">
+               <columns>
+                  <TableColumn fx:id="colId3" prefWidth="48.0" text="ID" />
+                  <TableColumn fx:id="colR1" prefWidth="73.0" text="Washing" />
+                  <TableColumn fx:id="colR2" prefWidth="74.0" text="Cleaning" />
+                  <TableColumn fx:id="colR3" minWidth="0.0" prefWidth="100.0" text="Change of oil" />
+                  <TableColumn fx:id="colR4" prefWidth="114.0" text="Change of brakes" />
+                  <TableColumn fx:id="colR5" prefWidth="128.0" text="Change of motor" />
+                  <TableColumn fx:id="colR6" minWidth="0.0" prefWidth="132.0" text="Change of wheels" />
+                  <TableColumn fx:id="colR7" prefWidth="122.0" text="Change of carcass" />
+                  <TableColumn fx:id="colR8" prefWidth="122.0" text="Total Price" />
+               </columns>
+            </TableView>
+            <VBox fx:id="searchVBox2" layoutX="205.0" layoutY="71.0" prefHeight="44.0" prefWidth="124.0" visible="false">
+               <children>
+                  <ChoiceBox fx:id="searchchoicebox2" prefHeight="27.0" prefWidth="197.0" style="-fx-border-color: BLACK;" visible="false" />
+               </children>
+            </VBox>
+            <TextField fx:id="searchtextfield2" layoutX="351.0" layoutY="68.0" prefHeight="25.0" prefWidth="177.0" promptText="               search" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Button fx:id="refreshbutton2" layoutX="788.0" layoutY="65.0" mnemonicParsing="false" onAction="#refreshbuttonaction2" prefHeight="25.0" prefWidth="76.0" text="Refresh" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="categorylabel2" layoutX="94.0" layoutY="68.0" prefHeight="31.0" prefWidth="100.0" text="Сategory" visible="false">
+               <font>
+                  <Font name="Calibri" size="25.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="newservicelabel" layoutX="208.0" layoutY="50.0" prefHeight="17.0" prefWidth="116.0" text="New Service" visible="false">
+               <font>
+                  <Font name="Calibri" size="22.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newservicetextfield" layoutX="328.0" layoutY="51.0" prefHeight="25.0" prefWidth="143.0" visible="false" />
+            <Label fx:id="newpricelabel" layoutX="509.0" layoutY="50.0" prefHeight="26.0" prefWidth="55.0" text="Price" visible="false">
+               <font>
+                  <Font name="Calibri" size="22.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newpricetextfield" layoutX="562.0" layoutY="51.0" prefHeight="25.0" prefWidth="76.0" visible="false" />
+            <Button fx:id="addbutton" layoutX="678.0" layoutY="49.0" mnemonicParsing="false" onAction="#addbuttonaction" text="add" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <TextField fx:id="servicesearchtextfield" layoutX="449.0" layoutY="136.0" prefHeight="25.0" prefWidth="124.0" promptText="           search" visible="false" />
+            <VBox fx:id="vboxservices" layoutX="312.0" layoutY="136.0" prefHeight="36.0" prefWidth="116.0">
+               <children>
+                  <ChoiceBox fx:id="servicessearchchoicebox" prefWidth="150.0" visible="false" />
+               </children>
+            </VBox>
+            <ImageView fx:id="image" fitHeight="493.0" fitWidth="728.0" layoutX="117.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../Downloads/photo_2021-05-06_14-21-21.jpg" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
+      <Button fx:id="requirementsbutton" layoutX="15.0" layoutY="355.0" mnemonicParsing="false" onAction="#requirementsbuttonaction" prefHeight="91.0" prefWidth="207.0" style="-fx-background-color: #F2AA4CFF;" text="Requirements" textOverrun="CLIP">
+         <font>
+            <Font name="Calibri Bold" size="28.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
