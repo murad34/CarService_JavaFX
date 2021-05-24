@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -16,6 +15,7 @@
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.CheckComboBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
@@ -116,7 +116,7 @@
                   <ChoiceBox fx:id="numberofownerchoicebox" prefHeight="20.0" prefWidth="68.0" style="-fx-border-color: BLACK;" visible="false" />
                </children>
             </VBox>
-            <Label fx:id="serviceslabel" layoutX="75.0" layoutY="465.0" text="Services" visible="false">
+            <Label fx:id="serviceslabel" layoutX="75.0" layoutY="465.0" prefHeight="51.0" prefWidth="131.0" text="Services" visible="false">
                <font>
                   <Font size="35.0" />
                </font>
@@ -133,7 +133,7 @@
                   <TableColumn fx:id="colNumberofcar" prefWidth="117.0" text="Number of a car" />
                </columns>
             </TableView>
-            <Button fx:id="sebdtodatabsebutton" layoutX="601.0" layoutY="447.0" mnemonicParsing="false" onAction="#sendtodatabaseaction" prefHeight="64.0" prefWidth="169.0" text="Send to Database" visible="false">
+            <Button fx:id="sendtodatabsebutton" layoutX="601.0" layoutY="447.0" mnemonicParsing="false" onAction="#sendtodatabaseaction" prefHeight="64.0" prefWidth="169.0" text="Send to Database" visible="false">
                <font>
                   <Font name="Calibri" size="18.0" />
                </font>
@@ -251,12 +251,12 @@
                </font>
             </Button>
             <TextField fx:id="servicesearchtextfield" layoutX="449.0" layoutY="136.0" prefHeight="25.0" prefWidth="124.0" promptText="           search" visible="false" />
-            <ListView fx:id="listviewservices" layoutX="251.0" layoutY="447.0" prefHeight="200.0" prefWidth="200.0" visible="false" />
             <VBox fx:id="vboxservices" layoutX="274.0" layoutY="135.0" prefHeight="44.0" prefWidth="162.0" visible="false">
                <children>
                   <ChoiceBox fx:id="servicessearchchoicebox" prefWidth="150.0" visible="false" />
                </children>
             </VBox>
+            <CheckComboBox fx:id="checkcombobox" layoutX="229.0" layoutY="480.0" prefHeight="25.0" prefWidth="131.0" visible="false" />
          </children></AnchorPane>
     </children>
 </AnchorPane>

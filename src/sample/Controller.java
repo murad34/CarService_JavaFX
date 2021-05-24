@@ -5,15 +5,13 @@ import java.sql.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.TableView;
@@ -21,12 +19,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.util.Duration;
-import net.proteanit.sql.DbUtils;
+import org.controlsfx.control.CheckComboBox;
 
-public class Controller {
+
+public class Controller implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -151,10 +147,10 @@ public class Controller {
     private Label serviceslabel;
 
     @FXML
-    private ListView<String> listviewservices;
+    private CheckComboBox<String> checkcombobox;
 
     @FXML
-    private Button sebdtodatabsebutton;
+    private Button sendtodatabsebutton;
 
     // part 2 - clients
 
@@ -384,8 +380,8 @@ public class Controller {
         tirelabel.setVisible(true);
         tirelabel2.setVisible(true);
         serviceslabel.setVisible(true);
-        listviewservices.setVisible(true);
-        sebdtodatabsebutton.setVisible(true);
+        checkcombobox.setVisible(true);
+        sendtodatabsebutton.setVisible(true);
 
         clientstable.setVisible(false);
         categorylabel.setVisible(false);
@@ -416,8 +412,7 @@ public class Controller {
 
     }
 
-
-    void listviewservices() {
+    void checkcombobox() {
 
         Statement statement;
         DataBase connectDB = new DataBase();
@@ -441,47 +436,75 @@ public class Controller {
             ex.printStackTrace();
         }
 
-        listviewservices.setItems(items);
-
-        listviewservices.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        listviewservices.addEventFilter(MouseEvent.MOUSE_PRESSED, evt -> {
-            Node node = evt.getPickResult().getIntersectedNode();
-
-            // go up from the target node until a list cell is found or it's clear
-            // it was not a cell that was clicked
-            while (node != null && node != listviewservices && !(node instanceof ListCell)) {
-                node = node.getParent();
-            }
-
-            // if is part of a cell or the cell,
-            // handle event instead of using standard handling
-            if (node instanceof ListCell) {
-                // prevent further handling
-                evt.consume();
-
-                ListCell cell = (ListCell) node;
-                ListView lv = cell.getListView();
-
-                // focus the listview
-                lv.requestFocus();
-
-                if (!cell.isEmpty()) {
-                    // handle selection for non-empty cells
-                    int index = cell.getIndex();
-                    if (cell.isSelected()) {
-                        lv.getSelectionModel().clearSelection(index);
-                    } else {
-                        lv.getSelectionModel().select(index);
-                    }
-                }
-            }
-        });
+        checkcombobox.getItems().addAll(items);
 
     }
 
 
-    @FXML
-    void sendtodatabaseaction(ActionEvent event) {
+//    void listviewservices() {
+//
+//        Statement statement;
+//        DataBase connectDB = new DataBase();
+//        ResultSet rs;
+//
+//        ObservableList<String> items = FXCollections.observableArrayList();
+//
+//
+//        try {
+//
+//            String sql = "select * from services";
+//            statement = connectDB.connecting().createStatement();
+//            rs = statement.executeQuery(sql);
+//
+//            while (rs.next()) {
+//
+//                items.add(rs.getString("services"));
+//
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//
+//        listviewservices.setItems(items);
+//
+//        listviewservices.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//        listviewservices.addEventFilter(MouseEvent.MOUSE_PRESSED, evt -> {
+//            Node node = evt.getPickResult().getIntersectedNode();
+//
+//            // go up from the target node until a list cell is found or it's clear
+//            // it was not a cell that was clicked
+//            while (node != null && node != listviewservices && !(node instanceof ListCell)) {
+//                node = node.getParent();
+//            }
+//
+//            // if is part of a cell or the cell,
+//            // handle event instead of using standard handling
+//            if (node instanceof ListCell) {
+//                // prevent further handling
+//                evt.consume();
+//
+//                ListCell cell = (ListCell) node;
+//                ListView lv = cell.getListView();
+//
+//                // focus the listview
+//                lv.requestFocus();
+//
+//                if (!cell.isEmpty()) {
+//                    // handle selection for non-empty cells
+//                    int index = cell.getIndex();
+//                    if (cell.isSelected()) {
+//                        lv.getSelectionModel().clearSelection(index);
+//                    } else {
+//                        lv.getSelectionModel().select(index);
+//                    }
+//                }
+//            }
+//        });
+//
+//    }
+
+
+    void ttt() {
 
         String namestring = nametextfield.getText();
         String surnamestring = surnametextfield.getText();
@@ -494,10 +517,6 @@ public class Controller {
         String numberofcarstring1 = numberofcartextfield1.getText();
         String numberofcarstring2 = numberofcartextfield2.getText();
         String numberofcarstring3 = numberofcartextfield3.getText();
-
-        Statement statement;
-        DataBase connectDB = new DataBase();
-
 
         if (namestring.length() < 1) {
             Alert message = new Alert(Alert.AlertType.INFORMATION);
@@ -559,22 +578,140 @@ public class Controller {
             message.setTitle("Error");
             message.setContentText("Fill the number of a car properly");
             message.show();
-        } else if (listviewservices.getSelectionModel().getSelectedItems() == null) {
+        } else if (checkcombobox.getCheckModel().getCheckedItems() == null) {
             Alert message = new Alert(Alert.AlertType.INFORMATION);
             message.setTitle("Error");
             message.setContentText("Choose services");
             message.show();
         } else {
 
-            try {
-                String sql = "insert into clients(name,numberofowner,dateofreceiving,dateofgiving,car,modelofcar,numberofcar) " +
-                        "values('" + namestring + " " + surnamestring + "','" + numberofownerstring1 + numberofownerstring2 + "','" + dateofreceivinglocaldate + "'," +
-                        "'" + dateofgivinglocaldate + "','" + carstring + "','" + modelofcarstring + "','" + numberofcarstring1 + "-" + numberofcarstring2 + "-" + numberofcarstring3 + "')";
-                statement = connectDB.connecting().createStatement();
-                statement.executeUpdate(sql);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            String sql = "insert into clients(name,numberofowner,dateofreceiving,dateofgiving,car,modelofcar,numberofcar) " +
+                    "values('" + namestring + " " + surnamestring + "','" + numberofownerstring1 + numberofownerstring2 + "','" + dateofreceivinglocaldate + "'," +
+                    "'" + dateofgivinglocaldate + "','" + carstring + "','" + modelofcarstring + "','" + numberofcarstring1 + "-" + numberofcarstring2 + "-" + numberofcarstring3 + "') ;" +
+                    "insert into requirements(requirements) values(' " + checkcombobox.getCheckModel().getCheckedItems() + " ')";
+
+            executeQuery(sql);
+            showClients();
+            showrequirements();
+
+//            String sql1 = "insert into requirements(requirements) " +
+//                    "values('" + listviewservices.getSelectionModel().getSelectedItems() + "')";
+//
+//            executeQuery(sql1);
+//            showrequirements();
+
+        }
+
+    }
+
+
+    @FXML
+    public void sendtodatabaseaction(ActionEvent event) {
+
+        ttt();
+
+//        String namestring = nametextfield.getText();
+//        String surnamestring = surnametextfield.getText();
+//        String numberofownerstring1 = numberofownerchoicebox.getSelectionModel().getSelectedItem();
+//        String numberofownerstring2 = numberofownertextfield.getText();
+//        String dateofreceivinglocaldate = dateofreceiving.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+//        String dateofgivinglocaldate = dateofgiving.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+//        String carstring = carcombobox.getSelectionModel().getSelectedItem();
+//        String modelofcarstring = modelofcarcombobox.getSelectionModel().getSelectedItem();
+//        String numberofcarstring1 = numberofcartextfield1.getText();
+//        String numberofcarstring2 = numberofcartextfield2.getText();
+//        String numberofcarstring3 = numberofcartextfield3.getText();
+//
+//        Statement statement;
+//        DataBase connectDB = new DataBase();
+//
+//
+//        if (namestring.length() < 1) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("Name is empty !");
+//            message.show();
+//        } else if (surnamestring.length() < 1) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("Surname is empty !");
+//            message.show();
+//        } else if (numberofownerchoicebox.getSelectionModel().getSelectedItem() == null) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("Choose type of the number !");
+//            message.show();
+//        } else if (numberofownerstring2.length() > 7) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("The number contains more than need numbers !");
+//            message.show();
+//        } else if (numberofownerstring2.length() < 7) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("The number contains less than need numbers !");
+//            message.show();
+//        } else if (dateofreceivinglocaldate == null) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("Choose Date of receiving !");
+//            message.show();
+//        } else if (dateofgivinglocaldate == null) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("Choose Date of giving !");
+//            message.show();
+//        } else if (carcombobox.getTypeSelector() == null) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("Choose a car !");
+//            message.show();
+//        } else if (modelofcarcombobox.getSelectionModel().getSelectedItem() == null) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("Choose a model of the car !");
+//            message.show();
+//        } else if (numberofcarstring1.length() < 1) {
+//            Alert ar = new Alert(Alert.AlertType.INFORMATION);
+//            ar.setTitle("Error");
+//            ar.setContentText("Fill the number of a car properly");
+//            ar.show();
+//        } else if (numberofcarstring2.length() < 1) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("Fill the number of a car properly");
+//            message.show();
+//        } else if (numberofcarstring3.length() < 1) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("Fill the number of a car properly");
+//            message.show();
+//        } else if (listviewservices.getSelectionModel().getSelectedItems() == null) {
+//            Alert message = new Alert(Alert.AlertType.INFORMATION);
+//            message.setTitle("Error");
+//            message.setContentText("Choose services");
+//            message.show();
+//        } else {
+//
+////            try {
+////                String sql = "insert into clients(name,numberofowner,dateofreceiving,dateofgiving,car,modelofcar,numberofcar) " +
+////                        "values('" + namestring + " " + surnamestring + "','" + numberofownerstring1 + numberofownerstring2 + "','" + dateofreceivinglocaldate + "'," +
+////                        "'" + dateofgivinglocaldate + "','" + carstring + "','" + modelofcarstring + "','" + numberofcarstring1 + "-" + numberofcarstring2 + "-" + numberofcarstring3 + "')";
+////                statement = connectDB.connecting().createStatement();
+////                statement.executeUpdate(sql);
+////
+////            } catch (SQLException throwables) {
+////                throwables.printStackTrace();
+////            }
+//
+//            String sql3 = "insert into clients(name,numberofowner,dateofreceiving,dateofgiving,car,modelofcar,numberofcar) " +
+//                    "values('" + namestring + " " + surnamestring + "','" + numberofownerstring1 + numberofownerstring2 + "','" + dateofreceivinglocaldate + "'," +
+//                    "'" + dateofgivinglocaldate + "','" + carstring + "','" + modelofcarstring + "','" + numberofcarstring1 + "-" + numberofcarstring2 + "-" + numberofcarstring3 + "')";
+//
+//            executeQuery(sql3);
+////            showClients();
+////            showrequirements();
+
 
 //        String a1;
 //        double b1;
@@ -649,18 +786,30 @@ public class Controller {
 //        double totalprice = b1 + b2 + b3 + b4 + b5 + b6 + b7;
 
 
-            try {
-                String sql = "insert into requirements(requirements) " +
-                        "values('" + listviewservices.getSelectionModel().getSelectedItems() + "')";
 
-                statement = connectDB.connecting().createStatement();
-                statement.executeUpdate(sql);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
+//            try {
+//                String sql = "insert into requirements(requirements) " +
+//                        "values('" + listviewservices.getSelectionModel().getSelectedItems() + "')";
+//
+//                statement = connectDB.connecting().createStatement();
+//                statement.executeUpdate(sql);
+//            } catch (SQLException throwables) {
+//                throwables.printStackTrace();
+//            }
+
+
+//            String sql1 = "insert into requirements(requirements) " +
+//                    "values('" + listviewservices.getSelectionModel().getSelectedItems() + "')";
+//
+//            executeQuery(sql1);
+////            showClients();
+////            showrequirements();
+
+//        }
 
     }
+
+
 
     // part 2 - clients
 
@@ -689,8 +838,8 @@ public class Controller {
         tirelabel.setVisible(false);
         tirelabel2.setVisible(false);
         serviceslabel.setVisible(false);
-        listviewservices.setVisible(false);
-        sebdtodatabsebutton.setVisible(false);
+        checkcombobox.setVisible(false);
+        sendtodatabsebutton.setVisible(false);
 
         categorylabel.setVisible(true);
         searchVBox.setVisible(true);
@@ -722,6 +871,9 @@ public class Controller {
         servicessearchchoicebox.setVisible(false);
         servicesearchtextfield.setVisible(false);
 
+        showClients();
+//        showrequirements();
+
 
     }
 
@@ -730,13 +882,14 @@ public class Controller {
 
     public ObservableList<Clients> getClients() {
 
-        Statement statement;
         DataBase connectDB = new DataBase();
+        Statement statement;
         ResultSet rs;
+
+        String sql = "select * from clients";
 
         try {
 
-            String sql = "select * from clients";
             statement = connectDB.connecting().createStatement();
             rs = statement.executeQuery(sql);
 
@@ -748,8 +901,8 @@ public class Controller {
                 list.add(clients);
             }
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return list;
 
@@ -914,6 +1067,8 @@ public class Controller {
             throwables.printStackTrace();
         }
 
+        showClients();
+
     }
 
 
@@ -952,8 +1107,8 @@ public class Controller {
         tirelabel.setVisible(false);
         tirelabel2.setVisible(false);
         serviceslabel.setVisible(false);
-        listviewservices.setVisible(false);
-        sebdtodatabsebutton.setVisible(false);
+        checkcombobox.setVisible(false);
+        sendtodatabsebutton.setVisible(false);
 
         clientstable.setVisible(false);
         categorylabel.setVisible(false);
@@ -985,6 +1140,9 @@ public class Controller {
         servicessearchchoicebox.setVisible(false);
         servicesearchtextfield.setVisible(false);
 
+//        showClients();
+        showrequirements();
+
     }
 
 
@@ -992,15 +1150,16 @@ public class Controller {
 
     public ObservableList<Requirements> getrequirements() {
 
-        Statement statement;
         DataBase connectDB = new DataBase();
+        Statement statement;
         ResultSet rs;
+
+        String sql5 = "select * from requirements";
 
         try {
 
-            String sql = "select * from requirements";
             statement = connectDB.connecting().createStatement();
-            rs = statement.executeQuery(sql);
+            rs = statement.executeQuery(sql5);
 
             Requirements requirements;
 
@@ -1008,13 +1167,22 @@ public class Controller {
                 requirements = new Requirements(rs.getInt("id"), rs.getString("requirements"), rs.getString("totalprice"));
                 requirementslist.add(requirements);
             }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return requirementslist;
 
+
     }
+
+//    public Connection getConnection() {
+//        Connection connect;
+//        try {
+//            connect = DriverManager.getConnection("jdbc:postgresql://localhost:5432/MyFirstApp(FX)");
+//        }
+//
+//        return null;
+//    }
 
     ObservableList<Requirements> showrequirementslist = getrequirements();
 
@@ -1126,8 +1294,8 @@ public class Controller {
         tirelabel.setVisible(false);
         tirelabel2.setVisible(false);
         serviceslabel.setVisible(false);
-        listviewservices.setVisible(false);
-        sebdtodatabsebutton.setVisible(false);
+        checkcombobox.setVisible(false);
+        sendtodatabsebutton.setVisible(false);
 
         clientstable.setVisible(false);
         categorylabel.setVisible(false);
@@ -1176,8 +1344,8 @@ public class Controller {
             String sql = "insert into services(services,prices) values('" + newservicestring + "','" + newpricestring + "')";
             statement = connectDB.connecting().createStatement();
             statement.executeUpdate(sql);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
 
@@ -1287,23 +1455,70 @@ public class Controller {
     }
 
 
-    void refresh() {
-
-
+    public void executeQuery(String sql) {
+        DataBase refresh = new DataBase();
+        Statement st;
+        try{
+            st=refresh.connecting().createStatement();
+            st.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
-    @FXML
-    void initialize() {
+//    void refresh() {
+//
+//        executeQuery(query);
+//
+//    }
+
+
+//    void handleButtonAction(ActionEvent event) {
+//
+//        if (event.getSource()==sendtodatabsebutton) {
+//            ttt();
+//        }
+//
+//    }
+
+//    @FXML
+//    void initialize() {
+//
+////        numberofownerchoicebox();
+////        carcombobox();
+////        modelofcarcombobox();
+////        listviewservices();
+////
+////        showClients();
+////        searchchoisebox();
+////        search();
+////        showrequirements();
+////        search2();
+////        searchchoicebox2();
+////
+////        showservices();
+////        search3();
+////        servicesearchchoicebox();
+//
+////        refresh();
+//
+//    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        showClients();
+        showrequirements();
+
 
         numberofownerchoicebox();
         carcombobox();
         modelofcarcombobox();
-        listviewservices();
+        checkcombobox();
 
         showClients();
-        searchchoisebox();
         search();
+        searchchoisebox();
         showrequirements();
         search2();
         searchchoicebox2();
@@ -1312,7 +1527,8 @@ public class Controller {
         search3();
         servicesearchchoicebox();
 
-        refresh();
+//        refresh();
+
 
     }
 }
